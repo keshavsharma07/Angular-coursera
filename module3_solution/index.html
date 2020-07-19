@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="NarrowItDownApp" lang="en" >
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.amber-orange.min.css" />
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  </head>
+<body>
+   <div ng-controller="NarrowItDownController as narrowCtrl" class="container">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="mdl-card_supporting-text">
+
+      <form ng-submit="narrowCtrl.searchMenuItems()">
+        <div class="input mdl-textfield mdl-js-textfield">
+          <input ng-model="narrowCtrl.searchTerm" class="mdl-textfield_input" type="text" id="keyword">
+            <label class="mdl-textfield_laber" for="keyword">Search term</label>
+        </div>
+
+      </form>
+
+      <button ng-click="narrowCtrl.searchMenuItems()" class="button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Narrow It Down For Me!</button>
+
+    </div>  
+
+
+
+
+    <!-- found-items should be implemented as a component -->
+    <found-items items="narrowCtrl.found"
+     on-remove="narrowCtrl.removeItem(index)">
+    </found-items>
+  </div>
+
+</body>
+</html>
